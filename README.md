@@ -10,7 +10,7 @@
 
 ```
 .envのファイル内容
-COOKIE_SECRET=cookienyamnyam
+COOKIE_SECRET=ID入力
 MYSQL_PASSWORD=　DBパスワード
 ```
 
@@ -21,14 +21,6 @@ MYSQL_PASSWORD=　DBパスワード
 9. npm run dev(次から 毎回 これで　バックサーバを開くこと、 今まで、正常にできたら、1~8 は やる必要がない。)
 10. localhost:3095 に サーバが回る(フロントは localhost:3090 から 進行される)
 11. バック 開発者が API.md と typings/db.ts を残している状況
-
-<!-- # 강좌 순서
-
-강좌에서 언급한대로 직접 세팅하기보다는 그냥 **settings/ts** 폴더 클론받아서 하시는 것을 추천드립니다.
-직접 세팅하기에는 버전이 자꾸 달라져서 세팅법이 바뀌고, 입문자분들한테는 버겁습니다.
-**폴더가 많아서 헷갈리니 back 폴더는 백엔드 용으로 남겨두시고, setting/ts 폴더를 front 폴더로 바꾼 뒤 나머지 폴더는 전부 지워버리세요.** -->
-
-## 2023.12.21
 
 1. package.json
 
