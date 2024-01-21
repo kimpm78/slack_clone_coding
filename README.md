@@ -152,7 +152,7 @@ Shutting down MySQL
 
 - webpack するとき webpack.config.ts を認識できない問題
 - npm i cross-env
-- package.json의 scripts의 build를 cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack
+- package.jsonの scriptsの build를 cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack
 - npm run build
 - index.html 実行してみる
 
@@ -161,7 +161,7 @@ Shutting down MySQL
 - 開発用サーバである devServer オプションの追加（port は 3090、publicPath は/dist/へ）
 - webpack serve するとき webpack.config.ts を認識できない問題
   - npm i -D ts-node webpack-dev-server @types/webpack-dev-server webpack-cli
-- package.json의 scripts の dev를 cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack serve --env development
+- package.jsonの scripts の dev를 cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack serve --env development
 - npm rundev すると localhost:3090 でサーバー実行される。
 
 ```実行の仕組みが複雑だったので、簡略に変更
@@ -194,7 +194,7 @@ Shutting down MySQL
 - npm i -D tsconfig-paths
 - tsconfig から baseUrl と paths 設定
 - webpack からは resolve 中に alias 設定
-- ../layouts/App 同じものを @layouts/App으로 接続 可能
+- ../layouts/App 同じものを @layouts/Appで 接続 可能
 
 13. emotion セッティング
 
@@ -208,8 +208,8 @@ Shutting down MySQL
 - リアクトルーター適用
 - npm i react-router react-router-dom
 - npm i -D @types/react-router @types/react-router-dom
-- client.tsx에서 App을 BrowserRouter で囲む
-- @layouts/App에 Switch, Redirect, Route 入れる （router v6 で Switch, Redirect は使わないようになる）
+- client.tsxには App을 BrowserRouter で囲む
+- @layouts/Appに Switch, Redirect, Route 入れる （router v6 で Switch, Redirect は使わないようになる）
 
 15. @loadable/component
 
@@ -287,7 +287,7 @@ Shutting down MySQL
 - 最初の因子がアドレス文字列ではなくアドレスをリターンする関数
 - この関数のパラメータとしてページが入っていて、現在何ページなのか分かる
 
-28. Workspace에 socket 連携する
+28. Workspaceに socket 連携する
 
 - socket.emit がクライアントからサーバへ、socket.on がサーバからクライアントへ
 
