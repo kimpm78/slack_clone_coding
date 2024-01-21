@@ -4,38 +4,120 @@
 # バックグラウンド セッティング
 
 0. [node 20](https://nodejs.org)バージョン(以前バージョンも構いません)と [MySQL](https://dev.mysql.com/downloads/mysql/)をインストール, mysql は インストール過程中 パスワード設定
-1. cd back
+1. cd back（接続するパス）
 2. npm i bcrypt && npm i
+   - npm i bcrypt：Node.js プロジェクトで bcrypt パッケージをインストールするためのコマンドです。bcrypt パッケージは、パスワードを安全に保存および検証するためのハッシュ関数を提供します。これを使用すると、ユーザーのパスワードを安全に保存
+   - npm i：プロジェクトに必要なすべての依存関係
 3. .env 作成する（COOKIE_SECRET と MYSQL_PASSWORD パスワード 設定）
 
-```
+```3.env（必ずbackの箇所に作成すること）
 .envのファイル内容
 COOKIE_SECRET=ID入力
 MYSQL_PASSWORD=　DBパスワード
 ```
 
-5. config/config.json 設定(MYSQL 接続設定)
-6. npx sequelize db:create(スキーマ 生成)
-7. npm run dev 実行し、 ctrl + c を　接続を切る(テーブル 生成)
-8. npx sequelize db:seed:all(基礎 データ 入れる)
-9. npm run dev(次から 毎回 これで　バックサーバを開くこと、 今まで、正常にできたら、1~8 は やる必要がない。)
-10. localhost:3095 に サーバが回る(フロントは localhost:3090 から 進行される)
-11. バック 開発者が API.md と typings/db.ts を残している状況
+5. config/config.json 設定(MYSQL データベースに接続するための設定)
+6. ここからは MYSQL の設定が必要です。先に # MYSQL 接続方法 (mac) 2 つの方法を　読んでください。
 
-12. package.json
+↓ MYSQL が正常に動いてる状態
 
-- npm init で　生成
+7. npx sequelize db:create(スキーマ 生成)
+8. npm run dev 実行し、 ctrl + c を　接続を切る(テーブル 生成)
+9. npx sequelize db:seed:all(基礎 データ 入れる)
+10. npm run dev(次から 毎回 これで　バックサーバを開くこと、 今まで、正常にできたら、1~8 は やる必要がない。)
+11. localhost:3095 に サーバが回る(フロントは localhost:3090 から 進行される)
+12. あと、コマンドを追加して、sleact-kim/monorepo/ に移動
+13. npm i （プロジェクトに必要なすべての依存関係を設定）
+14. 開発用コマンドは (npm run dev) / 本番用コマンド：
+    ＊　自分のプロジェクトは２つの環境は同じです。
+15. localhost:3090 を入力すると、アプリケーションが開きます。（ログイン画面から始めます。）
+
+Tip: 通常ホームページ（クローム）とシークレットモードを開いてやり取りをすることを確認できます。
+
+# MYSQL 接続方法 (mac) 2 つの方法
+
+# brew install 場合
+
+1. Rosetta 2 を有効化
+
+- arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+2. Homebrew install
+
+- /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+3. brew install mysql
+
+3-1 パスの設定が必要なので、If you need to have mysql@5.7 first in your PATH run:の後の 1 行をターミナルで実行してください。
+
+```
+下記の踊りに書いています。（バージョンは異なります。）
+echo 'export PATH="usr/local/opt/mysql@5.7/bin:PATH"' >> ~/.zshrc
+```
+
+3-2 source ~/.zshrc
+
+3-3 mysql --version または mysql -v（バージョン確認）
+
+```
+インストールできていたらMYSQLのバージョンが返ってくる
+mysql  Ver 8.0.31 for macos12.6 on arm64 (Homebrew)
+```
+
+4. brew services start mysql / sudo mysql.server start
+
+5. mysql.server status（状態確認）
+
+```
+SUCCESS! MySQL running (93471)　：成功
+もし、ERROR! MySQL is not running場合は sudoコマンドでお願いします。
+```
+
+6. brew services stop mysql / sudo mysql.server stop
+
+```
+Shutting down MySQL
+. SUCCESS!
+```
+
+7. brew services start mysql 成功できたら、# バックグラウンド セッティングの 7 番を進めてください。
+
+## MYSQL 設置方法（アプリケーション）
+
+0.こちらのリンクを確認して手順で実行してください。
+
+- [他の人のブログ](https://codelikes.com/mac-mysql-install/#toc3)
+
+  1. [MYSQL の設置](https://dev.mysql.com/downloads/mysql/)
+
+  2. ダウンロードボタンを押すと、ログインを促されますが、No thanks, just start my download を押すとダウンロードが進める
+
+  3. dmg ファイルを開いてインストールする。もし、セキュリティでエラーが出る場合は、設定の（プライバシーとセキュリティ）の下記から開くことができる
+
+  4. 設置を続けるボタンをして Configuration では (root のパスワードを設定することです：新しいパスワード入力なので、忘れないように気をつけてください。)
+
+  5. マックの設定から MYSQL の UI が　生成します。（Server 起動や停止がで可能です）
+
+  - 削除は Uninstall があります。
+
+  6. Server が立ち上げたら、# バックグラウンド セッティングの 7 番を進めてください。
+
+# package.json 　パッケージ説明
+
+1. package.json
+
+- npm init：（package.json を最初に作成する）
 - npm i react react-dom
 - npm i typescript @types/react @types/react-dom
 - インストール あと package-lock.json과 node_modules フォルダが　生成される
 
-2. .eslintrc
+2. .eslintrc (様々なルール、プラグイン、パーサー、設定オプションなどを指定することができる)
 
 - eslint 設定 ファイル
 - コード点検ツール、直接設定するとチームメンバー間の意見衝突がありますので、prettier に委任
-- npm i -D eslint
+- npm i -D eslint（install 方法）
 
-3. .prettierrc
+3. .prettierrc（Prettier（コードフォーマッター）の設定ファイル）
 
 - prettier 設定　ファイル
 - 保存すると勝手にコードを修正してくれる(エディタ設定が必要)
@@ -77,8 +159,9 @@ MYSQL_PASSWORD=　DBパスワード
 8. Web パックデブサーバのインストール
 
 - 開発用サーバである devServer オプションの追加（port は 3090、publicPath は/dist/へ）
-- webpack serve するとき webpack.config.ts を認識できない問題 -　 npm i -D ts-node webpack-dev-server @types/webpack-dev-server webpack-cli
-- package.json의 scripts의 dev를 cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack serve --env development
+- webpack serve するとき webpack.config.ts を認識できない問題
+  - npm i -D ts-node webpack-dev-server @types/webpack-dev-server webpack-cli
+- package.json의 scripts の dev를 cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack serve --env development
 - npm rundev すると localhost:3090 でサーバー実行される。
 
 ```実行の仕組みが複雑だったので、簡略に変更
@@ -155,72 +238,74 @@ MYSQL_PASSWORD=　DBパスワード
 19. @pages/LogIn 作成 及び SWR
 
 - ログインしたユーザーが会員登録・ログインページにアクセスする
-- GET 요청은 SWR로 하는 것도 괜찮음
+- GET のリクエストは SWR でするのも良い
 - npm i swr
-- SWR에 fetcher(axios를 사용)를 달아줌.
-- 로그인했음을 증명하기 위해 withCredentials: true 잊으면 안 됨.
+- SWR に fetcher（axios を使用）を付ける。
+- ログインしたことを証明するために with Credentials: true 忘れてはいけません。
 
 20. @layouts/Workspace 作成
 
-- 눈에 띄는 구역 단위로 스타일드컴포넌트로 만들어둠.
-- 구역 내부의 태그들은 스타일드컴포넌트로 만들면 변수명 지어야 하니 css선택자로 선택
+- 目立つエリア単位で、スタイルドコンポーネントにしておきる。
+- エリア内のタグは、スタイルドコンポーネントとして作成すると、変数名を付ける必要がありますので、CSS セレクタで選択する
 
-21. 그라바타
+21. gravatar（仮：プロフィール生成する）
+    [link](https://github.com/emerleite/node-gravatar#readme)
 
 - npm i gravatar @types/gravatar
-- Github같은 아이콘을 만들 수 있음
+- Github のようなアイコンを作ることができます
 
-22. typescript 정의
+22. typescript 定義
 
-- 기본적으로 변수, 매개변수, 리턴값에 타입을 붙여주면 됨.
-- 남이 타이핑해둔 것 분석하는 게 어려움
+- 基本的に、変数、パラメータ、戻り値には型を付ける
+- 他人がタイピングしたものを分析するのは難しい
 - Go to Type Definition
-- 자바스크립트 라이브러리 작성자와는 다른 사람이 만든 ts 라이브러리가 @types로 시작하는 것들
+- JavaScript ライブラリの作者とは異なり、他の人が作成した TypeScript ライブラリは一般的に @types で始まるもの
 
-23. @components/DMList 작성
+23. @components/DMList 作成
 
-- 현재 채널 참여자 목록 가져오기
+- 現在のチャンネル参加者リストを取得する
 
-24. @pages/DirectMessage 작성
+24. @pages/DirectMessage 作成
 
-- Header와 ChatList, ChatBox로 구성
+- Header と ChatList, ChatBox で 構成
 
-25. @components/ChatBox 먼저 작성
+25. @components/ChatBox 先に作成
 
-- react-mentions 활용
-- DM에서는 멘션 기능이 없지만 Channel에서는 있을 것
+- react-mentions 活用
+- DM（Direct Message）ではメンション機能がありませんが、Channel（チャンネル）ではメンションが可能
 
-26. DM 보내보기
+26. DM 送信
 
 - optimistic UI
-- 먼저 프론트에서 표시하고, 서버로는 그 다음에 요청보냄
-- 요청 실패하는 순간 프론트에서 제거하고 에러 메시지 띄움
-- 보낼 때 에러가난 것은 서버쪽에서 socket 연결 여부를 확인하기 때문
+- まずフロントで表示して、サーバにはその次に要請を送る
+- リクエストに失敗した瞬間、フロントから削除してエラーメッセージを表示
+- 送信時にエラーが発生したのは、サーバ側で socket が接続されているかどうかを確認するため
 
-27. DM 로딩은 useSWRInfinite 사용
+27. DM ロディングは useSWRInfinite 使用
 
-- 결과물이 2차원 배열 꼴로 나옴.
-- 첫 번째 인자가 주소 문자열이 아닌 주소를 리턴하는 함수
-- 이 함수의 매개변수로 페이지가 들어있어서 현재 몇 페이지인지 알 수 있음.
+- 結果物が 2 次元配列の形で出る
+- 最初の因子がアドレス文字列ではなくアドレスをリターンする関数
+- この関数のパラメータとしてページが入っていて、現在何ページなのか分かる
 
-28. Workspace에 소켓 연결하기
+28. Workspace에 socket 連携する
 
-- socket.emit이 클라이언트에서 서버로, socket.on이 서버에서 클라이언트로
+- socket.emit がクライアントからサーバへ、socket.on がサーバからクライアントへ
 
-29. DMList에 onlineList, dm 이벤트 연결
-30. @components/ChatList 작성 및 @components/Chat 구현
+29. DMList にオンライン List、dm イベントを接続
+30. @components/ChatList 作成　および @components/Chat 実装
 
 - npm i react-custom-scrollbars @types/react-custom-scrollbars
 
-31. makeSection 구현
+31. makeSection 実装
 
 - npm i dayjs
-- dayjs는 moment를 대체함
+- dayjs は moment の代わる
 
-32. 프로파일링 하면서 Chat에 memo 적용하기
-33. 인피니트 스크롤링 구현
-34. @components/ChannelList 작성
-35. @pages/ChannelMessage 작성
-36. Channel Chat 보내보기
-37. 빌드 설정
-38. 빌드 결과물인 JS와 html을 서버개발자에게 전달하기
+32. プロファイリングしながら Chat に memo を適用
+33. INFINITE のスクローリングを実現
+34. @components/ChannelList 作成
+35. @pages/ChannelMessage 作成
+36. Channel Chat 送信
+37. ビルド設定
+
+# 完了
