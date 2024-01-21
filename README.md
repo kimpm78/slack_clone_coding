@@ -22,7 +22,7 @@ MYSQL_PASSWORD=　DBパスワード
 10. localhost:3095 に サーバが回る(フロントは localhost:3090 から 進行される)
 11. バック 開発者が API.md と typings/db.ts を残している状況
 
-1. package.json
+12. package.json
 
 - npm init で　生成
 - npm i react react-dom
@@ -115,54 +115,52 @@ MYSQL_PASSWORD=　DBパスワード
 
 13. emotion セッティング
 
-- styled components와 비슷하지만 설정이 간단함.
+- styled components と似ていますが、設定が簡単
 - npm i @emotion/react @emotion/styled
-- npm i -D @emotion/babel-plugin (웹팩에 babel 설정 추가)
-- 스타일드 컴포넌트로 만들 때 변수를 많이 만드는 셈이므로 & 같은 선택자 적극 활용해야 변수 이름짓기를 최소화할 수 있음.
+- npm i -D @emotion/babel-plugin (Webpack に babel を設定追加)
+- styled components で際に変数を多く作成するわけですので、「&」のような選択者を積極的に活用してこそ、変数名付けを最小限に抑えることができます。
 
 14. @layouts/App 作成
 
-- 리액트 라우터 적용하기
+- リアクトルーター適用
 - npm i react-router react-router-dom
 - npm i -D @types/react-router @types/react-router-dom
-- client.tsx에서 App을 BrowserRouter로 감싸기
-- @layouts/App에 Switch, Redirect, Route 넣기
+- client.tsx에서 App을 BrowserRouter で囲む
+- @layouts/App에 Switch, Redirect, Route 入れる （router v6 で Switch, Redirect は使わないようになる）
 
 15. @loadable/component
 
-- 라우터를 코드스플리팅 해줌
-- 회원가입 페이지에 접근한 사람은 회원가입 페이지에 필요한 JS만 받음
-- 3초 룰 기억하자!
+- ルーターをコードスプリットしてくれる
+- 会員登録ページにアクセスした方は、会員登録ページに必要な JS のみ受け付ける
+- 3 秒ルールを覚えましょう！
 - npm i @loadable/component @types/loadable\_\_component
 
-16. @pages/SignUp 작성
+16. @pages/SignUp 作成
 
-## 2일차
-
-17. 회원가입 axios로 진행
+17. 会員登録 axios で 進行
 
 - npm i axios
-- CORS 문제를 피하기 위해서 devServer에 proxy 세팅
-- CORS는 브라우저에서 다른 도메인의 서버로 요청을 보낼 때 발생
-- 같은 도메인의 서버로 요청을 보내거나, 서버끼리 요청을 보낼 때는 발생하지 않음
-- 따라서 같은 도메인인 proxy서버를 띄워 CORS를 피해갈 수 있음.
+- CORS 問題を避けるために devServer に proxy をセット
+- CORS は ブラウザから 他の ドメインの Server にリクエストを送信する時に発生
+- 同じドメインのサーバーにリクエストを送信したり、サーバー同士でリクエストを送信したりする場合は発生しません
+- したがって、同じドメインである proxy サーバーを浮かせて CORS を避けることができる
 
-18. useInput 커스텀 훅 만들기
+18. useInput カスタムフックを構成
 
-- 커스텀 훅으로 훅들간에 중복된 것을 제거할 수 있음
-- 훅 내부에 훅을 작성할 수 있는 유일한 케이스
-- useCallback은 return 안에 들어있는 함수에 꼭 적용해주자
-- useMemo는 return 안에 들어있는 값에 적용하자
+- カスタムフックでフック間に重複を取り除くことができる
+- フックの内部にフックを作成できる唯一のケース
+- useCallback は return 中に入っている関数に必ず適用あげる
+- useMemo는 return の中に 入っている値に適用
 
-19. @pages/LogIn 작성 및 SWR
+19. @pages/LogIn 作成 及び SWR
 
-- 로그인 한 사람이 회원가입/로그인 페이지에 접근한다면?
+- ログインしたユーザーが会員登録・ログインページにアクセスする
 - GET 요청은 SWR로 하는 것도 괜찮음
 - npm i swr
 - SWR에 fetcher(axios를 사용)를 달아줌.
 - 로그인했음을 증명하기 위해 withCredentials: true 잊으면 안 됨.
 
-20. @layouts/Workspace 작성
+20. @layouts/Workspace 作成
 
 - 눈에 띄는 구역 단위로 스타일드컴포넌트로 만들어둠.
 - 구역 내부의 태그들은 스타일드컴포넌트로 만들면 변수명 지어야 하니 css선택자로 선택
@@ -204,8 +202,6 @@ MYSQL_PASSWORD=　DBパスワード
 - 결과물이 2차원 배열 꼴로 나옴.
 - 첫 번째 인자가 주소 문자열이 아닌 주소를 리턴하는 함수
 - 이 함수의 매개변수로 페이지가 들어있어서 현재 몇 페이지인지 알 수 있음.
-
-## 3일차
 
 28. Workspace에 소켓 연결하기
 
