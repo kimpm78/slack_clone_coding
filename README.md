@@ -101,6 +101,27 @@ Shutting down MySQL
   - 削除は Uninstall があります。
 
   6. Server が立ち上げたら、# バックグラウンド セッティングの 7 番を進めてください。
+ 
+# window mySQL
+
+![キャプチャ1](https://github.com/kimpm78/slack_clone_coding/assets/99940294/3dcfd241-8fc8-4a05-aa3f-f816300c7ff1)
+![キャプチャ2](https://github.com/kimpm78/slack_clone_coding/assets/99940294/87b0c72f-8c59-4bc1-a876-dbfb9ce625db)
+![キャプチャ3](https://github.com/kimpm78/slack_clone_coding/assets/99940294/9f47cc03-7880-4b6c-b7e1-4817dc8aa92c)
+![キャプチャ4](https://github.com/kimpm78/slack_clone_coding/assets/99940294/805fb700-4d85-473f-858d-0f7b4bc86809)
+![キャプチャ5](https://github.com/kimpm78/slack_clone_coding/assets/99940294/2da52718-9fa6-41b0-a3d6-90a579a3a4b3)
+![キャプチャ6](https://github.com/kimpm78/slack_clone_coding/assets/99940294/1be894d1-c196-465b-8974-5d5d45de8ab4)
+![キャプチャ7](https://github.com/kimpm78/slack_clone_coding/assets/99940294/fa8bf468-b71b-453c-83f8-6f7311530f85)
+![キャプチャ8](https://github.com/kimpm78/slack_clone_coding/assets/99940294/15283e88-1071-4719-be13-ea0f62351e47)
+![キャプチャ9](https://github.com/kimpm78/slack_clone_coding/assets/99940294/b7b78832-e91f-4ad0-b624-fad9dbb4f7fa)
+![キャプチャ10](https://github.com/kimpm78/slack_clone_coding/assets/99940294/80a65b1f-0b7b-4fa0-99f7-d762e593c89f)
+![キャプチャ11](https://github.com/kimpm78/slack_clone_coding/assets/99940294/3d9f9bc7-465b-4bb1-b3e2-9799b76b2af5)
+![キャプチャ12](https://github.com/kimpm78/slack_clone_coding/assets/99940294/47fe5272-1ef7-4e49-a1e8-29485c20f678)
+![キャプチャ13](https://github.com/kimpm78/slack_clone_coding/assets/99940294/1d39cd59-c8c2-4d9a-9945-24cb750629e9)
+![キャプチャ14](https://github.com/kimpm78/slack_clone_coding/assets/99940294/b3490374-f850-44ac-b555-9d57a794c631)
+![キャプチャ15](https://github.com/kimpm78/slack_clone_coding/assets/99940294/d4b6c433-9aa6-4ea6-8832-eaf46b2485e9)
+![キャプチャ16](https://github.com/kimpm78/slack_clone_coding/assets/99940294/6933af79-aed9-41c1-9d24-021bac62f0a9)
+![キャプチャ17](https://github.com/kimpm78/slack_clone_coding/assets/99940294/ed85c07d-05ef-4467-866d-efac9a92429d)
+
 
 # package.json 　パッケージ説明
 
