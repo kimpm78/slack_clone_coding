@@ -254,7 +254,7 @@ Shutting down MySQL
 - カスタムフックでフック間に重複を取り除くことができる
 - フックの内部にフックを作成できる唯一のケース
 - useCallback は return 中に入っている関数に必ず適用あげる
-- useMemo는 return の中に 入っている値に適用
+- useMemoは return の中に 入っている値に適用
 
 19. @pages/LogIn 作成 及び SWR
 
